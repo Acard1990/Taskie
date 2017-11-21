@@ -1,29 +1,53 @@
 //To-Do
 //==============================================================================
+//load getstarteddiv
+//user will click getstartedbtn.
+//hide getstarteddiv
+//show logindiv
+//user will input data
+//user will click logingtn
+//hide logindiv
+//show mainpagediv
+
+//user will click add task
+//seperate page or simple input form?
+
+//user will click pickup task
+//dim task under pickuptask area
+//add task under your account cue
+
+//user will click logoutbtn
+//hide mainpagediv
+//show getstarteddiv
 
 
+
+
+//==============================================================================
+//==============================================================================
+//==============================================================================
 //$(selector).load(URL,data,callback);
-$("#mainpage").load(function() {
-  //login page load
-  $("#logindiv").show();
-  //for scotts sanity-- the closing of "on load"
+$("#getstarteddiv").load(function() {
+    getstarted();
 });
 
-//Get Started Now Button Function
-$("#getstartedbtn").click(function() {
-  console.log("get started");
-
+//Get Started
+function getstarted() {
+  //getstarteddiv should already be loaded.
+  $("#getstartedbtn").click() {
+    console.log("get started");
+    $("#getstarteddiv").hide();
+    $(#logindiv).show();
+  }
 });
 
-
-//User Sign-In for registered users
+// on login page ===============================================================
 //needs massive refinement
-$("#signinbtn").click(function() {
-  // enter keyed
-  //if (e.keyCode == 13) {
-  //$('#button_sign_in').trigger('click');
-  //}
+$("#loginbtn").click(function() {
   console.log('logging in');
+  if (e.keyCode == 13) {
+  $('#loginbtn').trigger('click');
+  }
   $.ajax({
     url: "login",
     type: "post",
@@ -33,7 +57,7 @@ $("#signinbtn").click(function() {
       if (data.status == 'SUCCESS') {
         window.location = '';
       } else {
-        $('#regnewuserbtn').;
+        regnewuser();
       }
     },
     error: function(e) {
@@ -42,10 +66,15 @@ $("#signinbtn").click(function() {
   });
 });
 
+// on registration page ========================================================
+function regnewuser () {
+  $("#logindiv").hide();
+  $("#regnewuserdiv").show();
+};
 
 //User Registration Button ------    "No account Sign up"
 $("#regnewuserbtn").click(function() {
-  console.log("Registration");
+  console.log("Registration started");
   $("#registrationdiv").show();
 });
 
@@ -54,6 +83,9 @@ $("#regnewuserbtn").click(function() {
 //console.log("Forgot Password Clicked");
 //});
 
+
+
+//on main page =================================================================
 //my account button
 $("#myaccountbtn").click(function() {
   console.log("My Account");
@@ -64,6 +96,7 @@ $("#myaccountbtn").click(function() {
 //add task button
 $("#addtaskbtn").click(function() {
   console.log("Adding Task");
+
 
 });
 
@@ -77,7 +110,6 @@ $("#pickupbtn").click(function() {
 //my task drop down menu
 $("#mytaskbtn").click(function() {
   console.log("displaying my task");
-
   //$("#mytaskdiv").show();
   $("#mytaskdiv").fadeTo(100, 1.0);
 });
@@ -97,6 +129,9 @@ $("#logoutbtn").click(function() {
 //random sandbox for various parts
 //==============================================================================
 //==============================================================================
+
+//google map stuff==============================================================
+
 //Geo-location block to retrieve current latitude and longitude
 
 //var to hold current latitude, passed to Google API
