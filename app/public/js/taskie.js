@@ -1,6 +1,5 @@
 //To-Do
 //==============================================================================
-//=======================
 //load getstarteddiv
 //user will click getstartedbtn.
 //hide getstarteddiv
