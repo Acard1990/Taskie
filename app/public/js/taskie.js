@@ -39,10 +39,10 @@ function getstarted() {
 
 // on login page ===============================================================
 //needs massive refinement
-$("#loginbtn").click(function() {
+$(".loginlink").click(function() {
   console.log('logging in');
   if (e.keyCode == 13) {
-  $('#loginbtn').trigger('click');
+  $('.loginlink').trigger('click');
   }
   $.ajax({
     url: "login",
