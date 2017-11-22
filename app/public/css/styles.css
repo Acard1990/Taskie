@@ -1,0 +1,78 @@
+/*Fonts:
+Taskie logo: Pacifico
+All other fonts are Open Sans
+Both are available at fonts.google.com
+
+Font Sizes:
+Taskie logo on sign up and sign in pages: 72px
+Taskie main logo: 48px
+Homepage text: 36px
+User and Other's tasks text: 36px
+Nav links: 18px
+Sign in/sign up buttons and links: 18px
+Welcome back text: 18px
+Tasks text (all): 15px
+Add new task text: 15px
+Sign in/sign up form placeholder text: 14px
+Sign up terms of service: 12px
+Copyright text: 10px
+
+Colors:
+Green: #3BE67F
+Black: #565656
+Footer background: #F6F6F6
+Borders: #F6F6F6
+Stars: #FFE522
+Drop shadow: rgba(187, 187, 187, 0.5)
+Background image should have background-color of rgba(0,0,0,0.5)*/
+
+* {
+  background: lightgrey;
+}
+
+#headerinline {
+  background: white;
+  height: 55px
+}
+
+#logo {
+  color: #3BE67F;
+  font-family: 'Pacifico', cursive;
+  font-size: 48px;
+  background: white;
+  padding-left: 40px;
+}
+
+.headerlinks {
+  font-size: 18px;
+}
+
+/*overriding bootstrap*/
+.btn-info {
+  margin-top: 5px;
+  margin-left: 1%;
+  margin-right: 1%;
+  margin-bottom: 5px;
+}
+
+.blackfx {
+  color: #565656;
+  background-color: white;
+  border-color: #565656;
+}
+
+.blackfx:hover {
+  color: white;
+  background-color: #565656;
+}
+
+.greenfx {
+  color: #3BE67F;
+  background-color: white;
+  border-color: #3BE67F;
+}
+
+.greenfx:hover {
+  color: #565656;
+  background-color: #3BE67F;
+}
