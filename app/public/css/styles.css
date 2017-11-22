@@ -26,10 +26,13 @@ Stars: #FFE522
 Drop shadow: rgba(187, 187, 187, 0.5)
 Background image should have background-color of rgba(0,0,0,0.5)*/
 
+* {
+  background-color: grey;
+}
 
+/*header stuff*/
 #headerinline {
   background: white;
-
 }
 
 #logo {
@@ -72,4 +75,9 @@ Background image should have background-color of rgba(0,0,0,0.5)*/
 .greenfx:hover {
   color: #565656;
   background-color: #3BE67F;
+}
+
+/*footer stuff*/
+.fixed-bottom {
+  height: 40px;
 }
