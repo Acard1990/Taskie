@@ -1,0 +1,55 @@
+const express = require('express');
+const dotenv = require('dotenv').config();
+const cookieSession = require('cookie-session');
+const passport = require('passport');
+const authRoutes = require('./routes/auth-routes');
+const userRoutes = require('./routes/user-routes');
+const passportSetup = require('./config/passport-setup');
+const exphbs = require("express-handlebars");
+const bodyParser = require("body-parser");
+
+const app = express();
+var PORT = process.env.PORT || 3000;
+
+// Requiring our models for syncing
+var db = require("./models");
+
+// Sets up the Express app to handle data parsing
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.text());
+app.use(bodyParser.json({ type: "application/vnd.api+json" }));
+
+// Static directory
+app.use(express.static("public"));
+
+// set view engine
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
+
+// set up session cookies
+app.use(cookieSession({
+    maxAge: 86400000, // 1 day in milliseconds
+    keys: [process.env.CookieKey]
+}));
+
+// initialize passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+// set up routes
+app.use('/auth', authRoutes);
+app.use('/profile', userRoutes);
+
+// create home route
+app.get('/', (req, res) => {
+    res.render('index', { user: req.user });
+});
+
+
+db.sequelize.sync({ force: true }).then(function() {
+  app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
+  });
+});
