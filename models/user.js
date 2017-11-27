@@ -13,9 +13,17 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
+    username: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
     googleId: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
     thumbnail: {
       type: DataTypes.STRING,

@@ -23,4 +23,16 @@ router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
     res.redirect('/profile');
 });
 
+router.post('/signup', passport.authenticate('local-signup', {
+    successRedirect: '/profile',
+    failureRedirect: '/auth/login'
+  }
+));
+
+router.post('/login/local', passport.authenticate('local-signin', {
+    successRedirect: '/profile',
+    failureRedirect: '/auth/login'
+  }
+));
+
 module.exports = router;

@@ -1,5 +1,6 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const LocalStrategy = require('passport-local').Strategy;
 const db = require('../models');
 
 passport.serializeUser((user, done) => {
@@ -44,3 +45,66 @@ passport.use(
         });
     })
 );
+
+passport.use('local-signup', new LocalStrategy(
+    {
+      usernameField: 'email',
+      passwordField: 'password',
+      passReqToCallback: true // allows us to pass back the entire request to the callback
+    }, (req, email, password, done) => {
+      db.User.findOne({
+        where: {
+          username: email
+        }
+    }).then((user) => {
+        if (user) {
+          return done(null, false, { message: 'That email is already taken' });
+        } else {
+            db.User.create({
+              username: email,
+              password: password,
+              firstName: req.body.firstName,
+              lastName: req.body.lastName
+            }).then((newUser, created) => {
+                if (!newUser) {
+                  return done(null, false);
+                }
+                if (newUser) {
+                  return done(null, newUser);
+                }
+            });
+        }
+    });
+    }
+));
+
+passport.use('local-signin', new LocalStrategy(
+    {
+        usernameField: 'email',
+        passwordField: 'password',
+        passReqToCallback: true
+    },
+    (req, email, password, done) => {
+        db.User.findOne({
+            where: {
+                username: email
+            }
+        }).then((user) => {
+            if (!user) {
+                return done(null, false, { message: 'Email does not exist' });
+            }
+            if (!password) {
+                return done(null, false, {
+                    message: 'Incorrect password.'
+                });
+            }
+            var userinfo = user.get();
+            return done(null, userinfo);
+        }).catch((err) => {
+            console.log("Error:", err);
+            return done(null, false, {
+                message: 'Something went wrong with your Signin'
+            });
+        });
+    }
+));
