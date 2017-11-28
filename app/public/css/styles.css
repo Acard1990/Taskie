@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 /*Fonts:
 Taskie logo: Pacifico
 All other fonts are Open Sans
@@ -81,7 +81,7 @@ Background image should have background-color of rgba(0,0,0,0.5)*/
 /*footer stuff*/
 .fixed-bottom {
   height: 40px;
-=======
+
 body {
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://www.pisidesign.com/wp-content/uploads/2014/12/pisidesign-equipe-color.jpg);
     background-repeat: no-repeat;
@@ -222,7 +222,7 @@ p {
 .button3:hover {
     background-color: #3BE67F;
     color: white;
-    
+
 }
 
 .button4 {
@@ -267,5 +267,5 @@ button a:hover {
 button a:active {
     color: #3BE67F;
     background-color: white;
->>>>>>> 39e04af4a2a40f53e6253368ceb6c542c644ff52
+
 }
