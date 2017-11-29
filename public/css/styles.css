@@ -27,6 +27,13 @@ Stars: #FFE522
 Drop shadow: rgba(187, 187, 187, 0.5)
 Background image should have background-color of rgba(0,0,0,0.5)*/
 
+ body {
+     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("pisidesign-equipe-color.jpg");
+     background-position: center center fixed;
+     background-size: cover;
+     height: 100%;
+ }
+
 /*header stuff*/
 #headerinline {
   background: white;
@@ -79,14 +86,6 @@ Background image should have background-color of rgba(0,0,0,0.5)*/
   height: 40px;
 }
 
-body {
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("pisidesign-equipe-color.jpg");
-    background-repeat: no-repeat;
-    background-position: center center fixed;
-    background-size: cover;
-    height: 100%;
-}
-
 h1 {
     font-family: 'Pacifico', cursive;
     font-size: 3em;
@@ -96,7 +95,7 @@ h1 {
 
 h3 {
     font-family: 'Open Sans', sans-serif;
-    padding-bottom: 250px;
+
 }
 h2{
     font-family: 'Open Sans', sans-serif;
@@ -259,7 +258,7 @@ button a:visited {
 }
 
 button a:hover {
-    color: white;
+    color: black;
 }
 
 button a:active {
