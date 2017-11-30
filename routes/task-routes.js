@@ -2,12 +2,10 @@ const router = require('express').Router();
 const db = require("../models");
 
 
-// router.get('/', (req, res) => {
-//   db.Task.findAll({
-//     where: {
-//
-//     }
-//   })
-// });
+router.post('/', (req, res) => {
+  db.Task.create({
+    
+  })
+});
 
 module.exports = router;

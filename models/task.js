@@ -22,11 +22,10 @@ module.exports = (sequelize, DataTypes) => {
     });
     Task.hasOne(models.Assignment, {
       foreignKey: {
-        allowNull: false
+        allowNull: true
       }
     });
   };
-
 
   return Task;
 };
