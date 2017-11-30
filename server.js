@@ -7,12 +7,12 @@ const userRoutes = require('./routes/user-routes');
 const passportSetup = require('./config/passport-setup');
 const exphbs = require("express-handlebars");
 const bodyParser = require("body-parser");
+const flash = require('connect-flash');
+const db = require("./models");
 
 const app = express();
 var PORT = process.env.PORT || 3000;
 
-// Requiring our models for syncing
-var db = require("./models");
 
 // Sets up the Express app to handle data parsing
 app.use(bodyParser.json());
@@ -37,6 +37,8 @@ app.use(cookieSession({
 // initialize passport
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(flash());
 
 // set up routes
 app.use('/auth', authRoutes);

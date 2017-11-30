@@ -9,6 +9,7 @@ const authCheck = (req, res, next) => {
 };
 
 router.get('/', authCheck, (req, res) => {
+    console.log("HERE IS THE REQ.USER: " + req.task);
     res.render('profile', { user: req.user });
 });
 

@@ -14,7 +14,7 @@ router.get('/logout', (req, res) => {
 
 // auth with google+
 router.get('/google', passport.authenticate('google', {
-    scope: ['profile']
+    scope: ['profile', 'email']
 }));
 
 // callback route for google to redirect to
@@ -23,16 +23,16 @@ router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
     res.redirect('/profile');
 });
 
-router.post('/signup', passport.authenticate('local-signup', {
-    successRedirect: '/profile',
-    failureRedirect: '/auth/login'
-  }
-));
+router.post('/login/local', passport.authenticate('local-login', {
+  successRedirect: '/profile',
+  failureRedirect: '/auth/login',
+  failureFlash: true
+}));
 
-router.post('/login/local', passport.authenticate('local-signin', {
-    successRedirect: '/profile',
-    failureRedirect: '/auth/login'
-  }
-));
+router.post('/signup', passport.authenticate('local-signup', {
+  successRedirect: '/profile',
+  failureRedirect: '/auth/login',
+  failureFlash: true
+}));
 
 module.exports = router;

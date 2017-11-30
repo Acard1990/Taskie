@@ -1,10 +1,5 @@
-module.exports = function(sequelize, DataTypes) {
-  var User = sequelize.define('User', {
-    id: {
-      autoIncrement: true,
-      primaryKey: true,
-      type: DataTypes.INTEGER
-    },
+module.exports = (sequelize, DataTypes) => {
+  const User = sequelize.define('User', {
     firstName: {
       type: DataTypes.STRING,
       allowNull: false
@@ -13,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-    username: {
+    login: {
       type: DataTypes.STRING,
       allowNull: true
     },
@@ -21,14 +16,37 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: true
     },
-    googleId: {
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true
+    },
+    externalId: {
       type: DataTypes.STRING,
       allowNull: true
     },
     thumbnail: {
       type: DataTypes.STRING,
       allowNull: true
+    },
+    rating: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+      allowNull: false
     }
   });
+
+  User.associate = (models) => {
+    User.hasMany(models.Task, {
+      onDelete: "cascade"
+    });
+  };
+
+  User.associate = (models) => {
+    User.hasMany(models.Assignment, {
+      onDelete: "cascade"
+    });
+  };
+
   return User;
 };
