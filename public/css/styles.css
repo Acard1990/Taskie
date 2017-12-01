@@ -119,14 +119,18 @@ form{
   align-items: center;
 }
 
+.moveyouhoe {
+  margin-left: 5%;
+}
+
 label{
   float: left;
-	text-align: right;
-	width: 90px;
-	padding: 1px;
+	text-align: left;
+	width: 30%;
+  padding-left: 15%;
   align-items: center;
-
 }
+
 input, textarea{
 	display: block;
 	margin-bottom: 20px;
