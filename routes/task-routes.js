@@ -11,11 +11,9 @@ router.post('/task', (req, res, next) => {
 
 router.get('/profile', (req, res, next) => {
   db.Task.findAll({
-    where: {
-      UserId: req.user.id
-    },
     include: [db.User]
     }).then((task) => res.json(task)).catch(next);
 });
+
 
 module.exports = router;
