@@ -11,8 +11,19 @@ router.post('/task', (req, res, next) => {
 
 router.get('/profile', (req, res, next) => {
   db.Task.findAll({
-    include: [db.User]
+    include: [db.User, {
+      model: db.Assignment,
+      include: [db.User]
+    }]
     }).then((task) => res.json(task)).catch(next);
+});
+
+router.post('/grab/task/:id', (req, res, next) => {
+  db.Assignment.create({
+    assigned: true,
+    UserId: req.user.id,
+    TaskId: req.params.id
+  }).then((task) => res.json(task)).catch(next);
 });
 
 

@@ -29,8 +29,13 @@
           <h2>Others' Tasks</h2>
         </div>
 
+        <div id="pickedUp">
+          <h2>My Picked Up Tasks</h2>
+        </div>
+
         <script>
           var userTaskDiv = $('#myTasks');
+          var pickedUpDiv = $('#pickedUp');
           var allTasksDiv = $('#allTasks');
 
           $.ajax({
@@ -42,11 +47,28 @@
               if (response[i].UserId == {{user.id}}) {
                 let p = $(`<p>${response[i].description}</p>`);
                 userTaskDiv.append(p);
+              } else if (response[i].Assignment !== null && response[i].Assignment.UserId == {{user.id}}) {
+                let p = $(`<p>${response[i].description}</p>`);
+                pickedUpDiv.append(p);
               } else {
                 let p = $(`<p>${response[i].description}</p>`);
+                let btn = (`<button class="pickUp" data-id="${response[i].id}">Pick Up</button>`);
+                p.append(btn);
                 allTasksDiv.append(p);
               }
             }
+          });
+
+          $(document).on('click', '.pickUp', function(event){
+            event.preventDefault();
+            let id = $(this).data('id');
+            console.log(id);
+            $.ajax({
+              url: '/api/grab/task/' + id,
+              method: 'POST'
+            }).then((response) => {
+              console.log("Picked up");
+            });
           });
         </script>
     </body>
