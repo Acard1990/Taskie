@@ -11,8 +11,8 @@ const db = require('../models');
 
   passport.deserializeUser((id, done) => {
     db.User.findById(id).then((user) => {
-      done(null, user);
-    });
+      done(null, user && user.get({plain:true}));
+    }).catch(done);
   });
 
   passport.use(
@@ -36,8 +36,8 @@ const db = require('../models');
             email: profile.emails[0].value,
             thumbnail: profile._json.image.url
           }).then((newUser) => {
-            done(null, newUser);
-          });
+            done(null, newUser.get({plain:true}));
+          }).catch(done);
         }
       });
     })

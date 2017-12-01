@@ -4,6 +4,7 @@ const cookieSession = require('cookie-session');
 const passport = require('passport');
 const authRoutes = require('./routes/auth-routes');
 const userRoutes = require('./routes/user-routes');
+const taskRoutes = require('./routes/task-routes');
 const passportSetup = require('./config/passport-setup');
 const exphbs = require("express-handlebars");
 const bodyParser = require("body-parser");
@@ -43,6 +44,7 @@ app.use(flash());
 // set up routes
 app.use('/auth', authRoutes);
 app.use('/profile', userRoutes);
+app.use('/api', taskRoutes);
 
 // create home route
 app.get('/', (req, res) => {
