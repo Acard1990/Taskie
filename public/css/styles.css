@@ -28,10 +28,8 @@ Drop shadow: rgba(187, 187, 187, 0.5)
 Background image should have background-color of rgba(0,0,0,0.5)*/
 
  body {
-     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("pisidesign-equipe-color.jpg");
-     background-position: center center fixed;
-     background-size: cover;
-     height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("pisidesign-equipe-color.jpg");
+    line-height: 1.0;
  }
 
 /*header stuff*/
@@ -82,9 +80,18 @@ Background image should have background-color of rgba(0,0,0,0.5)*/
 }
 
 /*footer stuff*/
-.fixed-bottom {
-  height: 40px;
+.footerfool {
+  position: absolute;
+  bottom: 0;
+  width: 1280px;
 }
+
+.footertext {
+  color: silver;
+  text-align: center;
+  font-size: 14px;
+}
+
 
 h1 {
     font-family: 'Pacifico', cursive;
@@ -105,13 +112,20 @@ h2{
 }
 form{
     padding-bottom: 30px;
-    float: center;
+    padding-left: 25%;
 }
+
+.centerthisplease {
+  align-items: center;
+}
+
 label{
-	float: left;
+  float: left;
 	text-align: right;
 	width: 90px;
 	padding: 1px;
+  align-items: center;
+
 }
 input, textarea{
 	display: block;

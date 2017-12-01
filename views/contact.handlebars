@@ -2,33 +2,40 @@
 <html lang="en">
 
 <head>
-    <title>Contact Taskie</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:600|Pacifico" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css" type="text/css"/>
+  <title>Contact Taskie</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:600|Pacifico" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" type="text/css" />
 </head>
 
 <body>
 
-    <div class="intro container col-md-6">
-    <h2 style="text-align: center;">Contact Taskie</h2>
-  <div>
-    <p>Want to get in Contact with Taskie? Fill out the form below to send us over a message and we'll get backto you in 24 - 48 hours.
-    </p>
-    <p>Required fields are marked with an asterisk *.</p>
-    <form method="post" action="http://webdevbasics.net/scripts/javajam.php">
-        <label for="name">*Name:</label>
-        <input type="text" name="myName" id="myName" required>
-        <label for="email">*E-mail:</label>
-        <input type="text" name="myEmail" id="myEmail" required>
-        <label for="experience">*Comments or Concerns:</label>
-        <textarea name="experience" id="experience" rows="2" cols="20"></textarea>
-        <input id="submit" type="submit" value="Apply Now" required>
-    </form>
-  </div>
+  <div class="intro container">
+
+    <h2 class="text-center">Contact Taskie</h2>
+
+    <div class="formcenter">
+      <p>Want to get in Contact with Taskie? Fill out the form below to send us over a message and we'll get backto you in 24 - 48 hours.
+      </p>
+      <p>Required fields are marked with an asterisk *.</p>
+      <div class="center-block">
+        <form method="post" action="http://webdevbasics.net/scripts/javajam.php">
+          <label for="name">*Name:</label>
+          <input type="text" name="myName" id="myName" required>
+          <label for="email">*E-mail:</label>
+          <input type="text" name="myEmail" id="myEmail" required>
+          <label for="experience">*Comments or Concerns:</label>
+          <textarea name="experience" id="experience" rows="6" cols="20"></textarea>
+          <button type="button" class="button4 col-md-8"><a href="signup">Apply Now</a></button>
+        </form>
+      </div>
     </div>
+
+  </div>
+</div>
+
 
 
 </body>
