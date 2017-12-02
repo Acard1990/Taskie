@@ -7,6 +7,13 @@ module.exports = (sequelize, DataTypes) => {
         len: [1,150]
       }
     },
+    details: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1, 350]
+      }
+    },
     status: {
       type: DataTypes.BOOLEAN,
       defaultValue: false
