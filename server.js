@@ -47,9 +47,9 @@ app.use('/profile', userRoutes);
 app.use('/profile/api', taskRoutes);
 
 // create home route
-app.get('/', (req, res) => {
-    res.render('index', { user: req.user });
-});
+// app.get('/', (req, res) => {
+//     res.render('index', { user: req.user });
+// });
 
 
 db.sequelize.sync({}).then(function() {
