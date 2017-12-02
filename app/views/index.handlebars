@@ -24,11 +24,9 @@
             <button type="button" class="button3">
                 <a href="about.handlebars">About</a>
             </button>
-            <button type="button" class="button3">
-                <a href="contact.handlebars">Contact Us</a>
-            </button>
-            <button type="button" onclick="document.getElementById('id02').style.display='block'" class="button2">Sign In</button>
-            <button type="button" onclick="document.getElementById('id01').style.display='block'" class="button1">Sign Up</button>
+            <button type="button" onclick="document.getElementById('id03').style.display='block'" class="button4">Contact Us</button>
+            <button type="button" onclick="document.getElementById('id02').style.display='block'" class="button4">Sign In</button>
+            <button type="button" onclick="document.getElementById('id01').style.display='block'" class="button4">Sign Up</button>
         </div>
     </header>
     <div class="intro container" style="margin-top: 193px; margin-bottom: 176px; background-color: transparent !important;">
@@ -120,6 +118,42 @@
         var modal = document.getElementById('id02');
 
         // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+    <div id="id03" class="modal">
+        <form class="modal-content animate" action="/action_page.php">
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal">&times;</span>
+            </div>
+            <div class="container">
+                <h2>Contact Taskie</h2>
+                <p>Want to get in Contact with Us? Fill out the form below to send us over a message and we'll get back to you in
+                    24 - 48 hours.
+                </p>
+                <p>Required fields are marked with an asterisk *.</p>
+                <label>
+                    <b>*Name:</b>
+                </label>
+                <input type="text" name="myName" id="myName" required>
+                <label>
+                    <b>*E-mail:</b>
+                </label>
+                <input type="text" name="myEmail" id="myEmail" required>
+                <label for="experience">*Comments/Concerns:</label>
+                <textarea name="experience" id="experience" rows="6" cols="160"></textarea>
+                <button class="loginbtn" type="submit">Send Now</button>
+            </div>
+            <div class="container">
+                <button type="button" onclick="document.getElementById('id03').style.display='none'" class="cancelbtn2">Cancel</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        var modal = document.getElementById('id03');
         window.onclick = function (event) {
             if (event.target == modal) {
                 modal.style.display = "none";
