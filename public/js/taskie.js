@@ -1,40 +1,3 @@
-// var userTaskDiv = $('#myTasks');
-// var pickedUpDiv = $('#pickedUp');
-// var allTasksDiv = $('#allTasks');
-//
-// $.ajax({
-//   url: '/profile/api/curr_user',
-//   method: 'GET'
-// }).then((response) => {
-//   console.log(response);
-//   for (var i=0; i<response.length; i++) {
-//     if (response[i].UserId == id) {
-//       let p = $(`<p>${response[i].description}</p>`);
-//       userTaskDiv.append(p);
-//     } else if (response[i].Assignment !== null && response[i].Assignment.UserId == id) {
-//       let p = $(`<p>${response[i].description}</p>`);
-//       pickedUpDiv.append(p);
-//     } else {
-//       let p = $(`<p>${response[i].description}</p>`);
-//       let btn = (`<button class="pickUp" data-id="${response[i].id}">Pick Up</button>`);
-//       p.append(btn);
-//       allTasksDiv.append(p);
-//     }
-//   }
-// });
-//
-// $(document).on('click', '.pickUp', function(event) {
-//   event.preventDefault();
-//   let id = $(this).data('id');
-//   console.log(id);
-//   $.ajax({
-//     url: '/api/grab/task/' + id,
-//     method: 'POST'
-//   }).then((response) => {
-//     console.log("Picked up");
-//   });
-// });
-
 var taskie = {
   init: function() {
     this.cacheDom();
@@ -49,7 +12,6 @@ var taskie = {
   },
   bindEvents: function() {
     this.pickUp.on('click', this.grabTask.bind(this));
-    //this.pickUp.delegate('.pickUp', 'click', this.grabTask.bind(this));
   },
   render: function() {
     this.currUser();
@@ -98,45 +60,3 @@ var taskie = {
 };
 
 taskie.init();
-
-//
-// var people = {
-//     people: ['Will', 'Steve'],
-//     init: function() {
-//         this.cacheDom();
-//         this.bindEvents();
-//         this.render();
-//     },
-//     cacheDom: function() {
-//         this.$el = $('#peopleModule');
-//         this.$button = this.$el.find('button');
-//         this.$input = this.$el.find('input');
-//         this.$ul = this.$el.find('ul');
-//         this.template = this.$el.find('#people-template').html();
-//     },
-//     bindEvents: function() {
-//         this.$button.on('click', this.addPerson.bind(this));
-//         this.$ul.delegate('i.del', 'click', this.deletePerson.bind(this));
-//     },
-//     render: function() {
-//        var data = {
-//            people: this.people,
-//        };
-//        this.$ul.html(Mustache.render(this.template, data));
-//     },
-//     addPerson: function() {
-//         this.people.push(this.$input.val());
-//         this.render();
-//         this.$input.val('');
-//     },
-//     deletePerson: function(event) {
-//         var $remove = $(event.target).closest('li');
-//         var i = this.$ul.find('li').index($remove);
-//
-//         this.people.splice(i, 1);
-//         this.render();
-//     }
-//
-// };
-//
-// people.init();
