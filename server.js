@@ -44,7 +44,7 @@ app.use(flash());
 // set up routes
 app.use('/auth', authRoutes);
 app.use('/profile', userRoutes);
-app.use('/api', taskRoutes);
+app.use('/profile/api', taskRoutes);
 
 // create home route
 app.get('/', (req, res) => {

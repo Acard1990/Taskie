@@ -4,10 +4,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [2,150]
+        len: [1,150]
       }
     },
     status: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    assigned: {
       type: DataTypes.BOOLEAN,
       defaultValue: false
     }

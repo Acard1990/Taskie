@@ -1,7 +1,9 @@
 module.exports = (sequelize, DataTypes) => {
   const Assignment = sequelize.define('Assignment', {
     assigned: {
-      type: DataTypes.BOOLEAN
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false
     }
   });
 
