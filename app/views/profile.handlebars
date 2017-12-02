@@ -29,123 +29,129 @@
                 </button>
             </div>
         </header>
-        <h2>Your Tasks</h2>
-        <button onclick="myFunction1('Demo1')" class="tasks2 w3-button w3-block w3-left-align">Current Active Tasks</button>
-        <div id="Demo1" class="w3-hide w3-animate-zoom">
-            <label class="container">One
-                <input type="radio" checked="checked" name="radio">
-                <span class="checkmark"></span>
-            </label>
-            <label class="container">Two
-                <input type="radio" name="radio">
-                <span class="checkmark"></span>
-            </label>
-            <label class="container">Three
-                <input type="radio" name="radio">
-                <span class="checkmark"></span>
-            </label>
-            <label class="container">Four
-                <input type="radio" name="radio">
-                <span class="checkmark"></span>
-            </label>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Your Tasks</h2>
+                    <button onclick="myFunction1('Demo1')" class="tasks2 w3-button w3-block w3-left-align">Current Active Tasks</button>
+                    <div id="Demo1" class="w3-hide w3-animate-zoom">
+                        <label class="container">One
+                            <input type="radio" checked="checked" name="radio">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="container">Two
+                            <input type="radio" name="radio">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="container">Three
+                            <input type="radio" name="radio">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="container">Four
+                            <input type="radio" name="radio">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <script>
+                        function myFunction1(id) {
+                            var x = document.getElementById(id);
+                            if (x.className.indexOf("w3-show") == -1) {
+                                x.className += " w3-show";
+                            } else {
+                                x.className = x.className.replace(" w3-show", "");
+                            }
+                        }
+                    </script>
+                    <button onclick="myFunction2('Demo2')" class="tasks2 w3-button w3-block w3-left-align">See Your Previous Tasks</button>
+                    <div id="Demo2" class="w3-hide w3-animate-zoom">
+                        <label class="container">One
+                            <input type="radio" checked="checked" name="radio">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="container">Two
+                            <input type="radio" name="radio">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="container">Three
+                            <input type="radio" name="radio">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="container">Four
+                            <input type="radio" name="radio">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    
+                    <script>
+                        function myFunction2(id) {
+                            var x = document.getElementById(id);
+                            if (x.className.indexOf("w3-show") == -1) {
+                                x.className += " w3-show";
+                            } else {
+                                x.className = x.className.replace(" w3-show", "");
+                            }
+                        }
+                    </script>
+                    <button onclick="myFunction3('Demo3')" class="tasks2 w3-button w3-block w3-left-align">See Tasks You've Picked Up</button>
+                    <div id="Demo3" class="w3-hide w3-animate-zoom">
+                        <label class="container">One
+                            <input type="radio" checked="checked" name="radio">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="container">Two
+                            <input type="radio" name="radio">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="container">Three
+                            <input type="radio" name="radio">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="container">Four
+                            <input type="radio" name="radio">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <script>
+                        function myFunction3(id) {
+                            var x = document.getElementById(id);
+                            if (x.className.indexOf("w3-show") == -1) {
+                                x.className += " w3-show";
+                            } else {
+                                x.className = x.className.replace(" w3-show", "");
+                            }
+                        }
+                    </script>
+                    </div>
+                <div class="col-md-6">
+                    <table data-table="col-six" style="float: right;">
+                        <thead>
+                            <tr>
+                                <th>Current Active Tasks (11/20 - 12/01)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-heading="Name">Test Flight 1</td>
+                            </tr>
+                            <tr>
+                                <td data-heading="Name">Test Flight 2</td>
+                            </tr>
+                            <tr>
+                                <td data-heading="Name">Test Flight 3</td>
+                            </tr>
+                            <tr>
+                                <td data-heading="Name">Test Flight 1</td>
+                            </tr>
+                            <tr>
+                                <td data-heading="Name">Test Flight 2</td>
+                            </tr>
+                            <tr>
+                                <td data-heading="Name">Test Flight 3</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-        </div>
-        <script>
-            function myFunction1(id) {
-                var x = document.getElementById(id);
-                if (x.className.indexOf("w3-show") == -1) {
-                    x.className += " w3-show";
-                } else {
-                    x.className = x.className.replace(" w3-show", "");
-                }
-            }
-        </script>
-        <button onclick="myFunction2('Demo2')" class="tasks2 w3-button w3-block w3-left-align">See Your Previous Tasks</button>
-        <div id="Demo2" class="w3-hide w3-animate-zoom">
-            <label class="container">One
-                <input type="radio" checked="checked" name="radio">
-                <span class="checkmark"></span>
-            </label>
-            <label class="container">Two
-                <input type="radio" name="radio">
-                <span class="checkmark"></span>
-            </label>
-            <label class="container">Three
-                <input type="radio" name="radio">
-                <span class="checkmark"></span>
-            </label>
-            <label class="container">Four
-                <input type="radio" name="radio">
-                <span class="checkmark"></span>
-            </label>
-        </div>
-        </div>
-        <script>
-            function myFunction2(id) {
-                var x = document.getElementById(id);
-                if (x.className.indexOf("w3-show") == -1) {
-                    x.className += " w3-show";
-                } else {
-                    x.className = x.className.replace(" w3-show", "");
-                }
-            }
-        </script>
-        <button onclick="myFunction3('Demo3')" class="tasks2 w3-button w3-block w3-left-align">See Tasks You've Picked Up</button>
-        <div id="Demo3" class="w3-hide w3-animate-zoom">
-            <label class="container">One
-                <input type="radio" checked="checked" name="radio">
-                <span class="checkmark"></span>
-            </label>
-            <label class="container">Two
-                <input type="radio" name="radio">
-                <span class="checkmark"></span>
-            </label>
-            <label class="container">Three
-                <input type="radio" name="radio">
-                <span class="checkmark"></span>
-            </label>
-            <label class="container">Four
-                <input type="radio" name="radio">
-                <span class="checkmark"></span>
-            </label>
-        </div>
-        </div>
-        <script>
-            function myFunction3(id) {
-                var x = document.getElementById(id);
-                if (x.className.indexOf("w3-show") == -1) {
-                    x.className += " w3-show";
-                } else {
-                    x.className = x.className.replace(" w3-show", "");
-                }
-            }
-        </script>
-        <table data-table="col-six">
-            <thead>
-                <tr>
-                    <th>Current Active Tasks (11/20 - 12/01)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td data-heading="Name">Test Flight 1</td>
-                </tr>
-                <tr>
-                    <td data-heading="Name">Test Flight 2</td>
-                </tr>
-                <tr>
-                    <td data-heading="Name">Test Flight 3</td>
-                </tr>
-                <tr>
-                    <td data-heading="Name">Test Flight 1</td>
-                </tr>
-                <tr>
-                    <td data-heading="Name">Test Flight 2</td>
-                </tr>
-                <tr>
-                    <td data-heading="Name">Test Flight 3</td>
-                </tr>
-            </tbody>
-        </table>
     </body>
 </html>

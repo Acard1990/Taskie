@@ -262,7 +262,6 @@ button a:active {
         width: 16.66%;
     }
     $this td {
-        float: left;
         line-height: 1.4;
         padding: .5em 0;
         text-align: center;
@@ -312,7 +311,6 @@ button a:active {
 .container {
     display: block;
     position: relative;
-    padding-left: 35px;
     margin-bottom: 12px;
     cursor: pointer;
     font-size: 22px;
