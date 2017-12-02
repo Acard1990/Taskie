@@ -42,7 +42,13 @@ Background image should have background-color of rgba(0,0,0,0.5)*/
   font-family: 'Pacifico', cursive;
   font-size: 48px;
   background: white;
-  padding-left: 40px;
+}
+
+.logomodel {
+  color: #3BE67F;
+  font-family: 'Pacifico', cursive;
+  font-size: 48px;
+  background: white;
 }
 
 .headerlinks {
@@ -110,10 +116,7 @@ h2{
 .intro{
     color: #3BE67F;
 }
-form{
-    padding-bottom: 30px;
-    padding-left: 25%;
-}
+
 
 .centerthisplease {
   align-items: center;
@@ -121,22 +124,6 @@ form{
 
 .moveyouhoe {
   margin-left: 5%;
-}
-
-label{
-  float: left;
-	text-align: left;
-	width: 30%;
-  padding-left: 15%;
-  align-items: center;
-}
-
-input, textarea{
-	display: block;
-	margin-bottom: 20px;
-}
-input[type="submit"]{
-	margin-bottom: 100px;
 }
 
 header {
@@ -283,4 +270,8 @@ button a:active {
     color: #3BE67F;
     background-color: white;
 
+}
+
+.model {
+  padding-top: 1px;
 }

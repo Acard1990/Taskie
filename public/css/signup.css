@@ -9,7 +9,7 @@ input[type=text], input[type=password] {
 
 /* Set a style for all buttons */
 .cancelbtn, .signupbtn {
-    background-color: #4CAF50;
+    background-color: #3BE67F;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -25,7 +25,7 @@ input[type=text], input[type=password] {
 }
 
 /* Float cancel and signup buttons and add an equal width */
-.cancelbtn,.signupbtn {float:left;width:50%}
+.cancelbtn,.signupbtn {float:left;width:100%}
 
 /* Add padding to container elements */
 .container {
@@ -83,4 +83,8 @@ input[type=text], input[type=password] {
     .cancelbtn, .signupbtn {
        width: 100%;
     }
+}
+
+.model {
+  padding-top: 5%;
 }

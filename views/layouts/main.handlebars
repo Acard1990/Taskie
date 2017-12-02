@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 
@@ -10,27 +9,144 @@
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css" type="text/css">
+  <link rel="stylesheet" href="css/login.css" type="text/css">
+  <link rel="stylesheet" href="css/signup.css" type="text/css">
 
 </head>
+
 <body>
   <header>
     <div id="headerinline" class="row">
-      <h2 id="logo" class="col-md-6">Taskie</h2>
-      <button type="button" class="btn btn-light headerlinks homelink"><a href="home">Home<a/></button>
-      <button type="button" class="btn btn-light headerlinks aboutlink"><a href="about">About<a/></button>
-      <button type="button" class="btn btn-light headerlinks contactlink"><a href="contact">Contact Us<a/></button>
-      <button type="button" class="btn btn-info blackfx headerlinks col-md-1 loginlink"><a href="login">Login<a/></button>
-      <button type="button" class="btn btn-info greenfx headerlinks col-md-1 signuplink"><a href="signup">Sign Up<a/></button>
+      <h1 id="logo" class="col-md-6">Taskie</h1>
+      <button type="button" class="btn btn-light headerlinks homelink"><a href="index">Home</a></button>
+      <button type="button" class="btn btn-light headerlinks aboutlink"><a href="about">About</a></button>
+      <button type="button" onclick="document.getElementById('id03').style.display='block'" class="btn btn-light headerlinks aboutlink"><a href="#">Contact Us</a></button>
+      <button type="button" onclick="document.getElementById('id02').style.display='block'" class="btn btn-info greenfx headerlinks col-md-1">Login</button>
+      <button type="button" onclick="document.getElementById('id01').style.display='block'" class="btn btn-info greenfx headerlinks col-md-1">Sign Up</button>
     </div>
   </header>
 
-    {{{ body }}}
+  {{{ body }}}
 
+  <div id="id01" class="modal">
+    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+    <form class="modal-content animate" action="/action_page.php">
+      <div class="container">
+        <label>
+                    <b>Email</b>
+                </label>
+        <input type="text" placeholder="Enter Email" name="email" required>
 
-    <!--[ footer ] -->
-    <footer class="w3-container w3-padding-16 w3-light-grey footerfool footertext">
-      <a class="footertext" href="">Copyright the 27ers</a>
-    </footer>
+        <label>
+                    <b>Password</b>
+                </label>
+        <input type="password" placeholder="Enter Password" name="psw" required>
+
+        <label>
+                    <b>Repeat Password</b>
+                </label>
+        <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+        <input type="checkbox" checked="checked"> Remember me
+        <p style="color: lightgrey;">By creating an account you agree to our Terms & Privacy.</p>
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+        <div class="clearfix">
+          <button type="submit" class="signupbtn">Sign Up</button>
+          <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    // Get the modal
+    var modal = document.getElementById('id01');
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+  <div id="id02" class="modal">
+    <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+    <form class="modal-content animate" action="/action_page.php">
+      <div class="imgcontainer">
+
+      </div>
+
+      <div class="container">
+        <label>
+                    <b>Username</b>
+                </label>
+        <input type="text" placeholder="Enter Username" name="uname" required>
+
+        <label>
+                    <b>Password</b>
+                </label>
+        <input type="password" placeholder="Enter Password" name="psw" required>
+
+        <button class="loginbtn" type="submit">Login</button>
+        <button class="loginbtn" type="submit">Login with Google</button>
+        <input type="checkbox" checked="checked"> Remember me
+      </div>
+
+      <div class="container">
+        <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn2">Cancel</button>
+        <span class="psw">Forgot
+                    <a href="#">password?</a>
+                </span>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    // Get the modal
+    var modal = document.getElementById('id02');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+  <div id="id03" class="modal">
+    <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal">&times;</span>
+    <form class="modal-content animate" action="/action_page.php" style="margin-top:0px;">
+  
+      <div class="container">
+        <h2>Contact <span class="logomodel">Taskie</span></h2>
+        <label>
+                    <b>*Name:</b>
+                </label>
+        <input type="text" name="myName" id="myName" required>
+        <label>
+                    <b>*E-mail:</b>
+                </label>
+        <input type="text" name="myEmail" id="myEmail" required>
+        <label for="experience">
+                  <b>Comments:</b>
+                </label>
+        <textarea name="experience" id="experience" rows="6" class="col-md-12"></textarea>
+        <button class="loginbtn" type="submit">Send Now</button>
+        <button type="button" onclick="document.getElementById('id03').style.display='none'" class="cancelbtn2">Cancel</button>
+      </div>
+    </form>
+  </div>
+  <script>
+    var modal = document.getElementById('id03');
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+
+  <!--[ footer ] -->
+  <footer class="w3-container w3-padding-16 w3-light-grey footerfool footertext">
+    <a class="footertext" href="">Copyright the 27ers</a>
+  </footer>
 
 
 </body>
