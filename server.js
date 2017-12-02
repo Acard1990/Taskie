@@ -1,4 +1,3 @@
-
 const express = require('express');
 const dotenv = require('dotenv').config();
 const cookieSession = require('cookie-session');
@@ -53,7 +52,7 @@ app.get('/', (req, res) => {
 });
 
 
-db.sequelize.sync({ force: true }).then(function() {
+db.sequelize.sync({}).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
