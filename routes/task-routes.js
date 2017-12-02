@@ -73,5 +73,12 @@ router.post('/grab/task/:taskId', (req, res, next) => {
   })).catch(next);
 });
 
+router.post('/rating/update', (req, res, next) => {
+  db.Rating.create({
+    rating: req.body.rating,
+    UserId: req.body.postUserRating
+  }).then(rating => res.json(rating)).catch(next);
+});
+
 
 module.exports = router;
