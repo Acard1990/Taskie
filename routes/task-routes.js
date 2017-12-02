@@ -16,7 +16,11 @@ router.get('/curr_user', (req, res, next) => {
   db.Task.findAll({
     where: {
       UserId: req.user.id
-    }
+    },
+    include: [{
+      model: db.Assignment,
+      include: db.User
+    }]
   }).then((task) => res.json(task)).catch(next);
 });
 
