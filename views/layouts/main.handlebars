@@ -21,12 +21,18 @@
       <button type="button" class="btn btn-light headerlinks homelink"><a href="index">Home</a></button>
       <button type="button" class="btn btn-light headerlinks aboutlink"><a href="about">About</a></button>
       <button type="button" onclick="document.getElementById('id03').style.display='block'" class="btn btn-light headerlinks aboutlink"><a href="#">Contact Us</a></button>
+      {{#if user}}
+        <button type="button" class="btn btn-info greenfx headerlinks col-md-1"><a href="/auth/logout">Logout</a></button>
+      {{else}}
       <button type="button" onclick="document.getElementById('id02').style.display='block'" class="btn btn-info greenfx headerlinks col-md-1">Login</button>
       <button type="button" onclick="document.getElementById('id01').style.display='block'" class="btn btn-info greenfx headerlinks col-md-1">Sign Up</button>
+      {{/if}}
     </div>
   </header>
 
+
   {{{ body }}}
+
 
   <div id="id01" class="modal">
     <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
@@ -80,9 +86,9 @@
 
       <div class="container">
         <label>
-                    <b>Username</b>
+                    <b>Email</b>
                 </label>
-        <input type="text" placeholder="Enter Username" name="uname" required>
+        <input type="text" placeholder="Enter Email" name="uname" required>
 
         <label>
                     <b>Password</b>
