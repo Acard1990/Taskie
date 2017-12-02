@@ -1,38 +1,61 @@
-// *****************************************************************************
-// Server.js - This file is the initial starting point for the Node/Express server.
-//
-// ******************************************************************************
-// *** Dependencies
-// =============================================================
-var express = require("express");
 
-// Set Handlebars.
-var exphbs = require("express-handlebars");
-var app = express();
+const express = require('express');
+const dotenv = require('dotenv').config();
+const cookieSession = require('cookie-session');
+const passport = require('passport');
+const authRoutes = require('./routes/auth-routes');
+const userRoutes = require('./routes/user-routes');
+const taskRoutes = require('./routes/task-routes');
+const passportSetup = require('./config/passport-setup');
+const exphbs = require("express-handlebars");
+const bodyParser = require("body-parser");
+const flash = require('connect-flash');
+const db = require("./models");
 
+const app = express();
+var PORT = process.env.PORT || 3000;
+
+
+// Sets up the Express app to handle data parsing
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.text());
+app.use(bodyParser.json({ type: "application/vnd.api+json" }));
+
+// Static directory
 app.use(express.static("public"));
 
+// set view engine
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-// Sets up the Express App
-// =============================================================
 
-var PORT = process.env.PORT || 8080;
+// set up session cookies
+app.use(cookieSession({
+    maxAge: 86400000, // 1 day in milliseconds
+    keys: [process.env.CookieKey]
+}));
 
-app.get("/", function(req, res){
-  res.render("index");
-});
-app.get("/home", function(req, res){
-  res.render("index");
-});
-app.get("/about", function(req, res){
-  res.render("about");
-});
-app.get("/contact", function(req, res){
-  res.render("contact");
+// initialize passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(flash());
+
+// set up routes
+app.use('/auth', authRoutes);
+app.use('/profile', userRoutes);
+app.use('/profile/api', taskRoutes);
+
+// create home route
+app.get('/', (req, res) => {
+    res.render('index', { user: req.user });
 });
 
-app.listen(PORT, function() {
-  console.log("App listening on PORT " + PORT);
+
+db.sequelize.sync({ force: true }).then(function() {
+  app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
+  });
+
 });

@@ -1,158 +1,64 @@
-//To-Do
-//==============================================================================
-//load getstarteddiv
-//user will click getstartedbtn.
-//hide getstarteddiv
-//show logindiv
-//user will input data
-//user will click logingtn
-//hide logindiv
-//show mainpagediv
 
-//user will click add task
-//seperate page or simple input form?
-
-//user will click pickup task
-//dim task under pickuptask area
-//add task under your account cue
-
-//user will click logoutbtn
-//hide mainpagediv
-//show getstarteddiv
-//==============================================================================
-//==============================================================================
-//==============================================================================
-//$(selector).load(URL,data,callback);
-$("#getstarteddiv").load(function() {
-    getstarted();
-});
-
-//Get Started
-function getstarted() {
-  //getstarteddiv should already be loaded.
-  $("#getstartedbtn").click() {
-    console.log("get started");
-    $("#getstarteddiv").hide();
-    $(#logindiv).show();
-  }
-});
-
-// on login page ===============================================================
-//needs massive refinement
-$(".loginlink").click(function() {
-  console.log('logging in');
-  if (e.keyCode == 13) {
-  $('.loginlink').trigger('click');
-  }
-  $.ajax({
-    url: "login",
-    type: "post",
-    data: $('#login_form').serialize(),
-    dataType: 'json',
-    success: function(data) {
-      if (data.status == 'SUCCESS') {
-        window.location = '';
-      } else {
-        regnewuser();
+var taskie = {
+  init: function() {
+    this.cacheDom();
+    this.bindEvents();
+    this.render();
+  },
+  cacheDom: function() {
+    this.$curUserTask = $('#myTasks');
+    this.$curUserPickedUp = $('#pickedUp');
+    this.$otherUserTasks = $('#allTasks');
+    this.pickUp = $(`<button class="pickUp">Pick Up</button>`);
+  },
+  bindEvents: function() {
+    this.pickUp.on('click', this.grabTask.bind(this));
+    //this.pickUp.delegate('.pickUp', 'click', this.grabTask.bind(this));
+  },
+  render: function() {
+    this.currUser();
+    this.usersTasks();
+    this.currUserAssignments();
+  },
+  getData: function(url, method, div, btn) {
+    $.ajax({
+      url: url,
+      method: method
+    }).done(response => {
+      console.log(response);
+      for (let i=0;i<response.length;i++) {
+        if (response[i].description != null) {
+          let p = $(`<p>${response[i].description}</p>`);
+          $(btn).attr('data-id', response[i].id);
+          p.append(btn);
+          div.append(p);
+        } else {
+          let p = $(`<p>${response[i].Task.description}</p>`);
+          $(btn).attr('data-id', response[i].id);
+          p.append(btn);
+          div.append(p);
+        }
       }
-    },
-    error: function(e) {
-      console.log('error:' + e);
-    }
-  });
-});
-
-// on registration page ========================================================
-function regnewuser () {
-  $("#logindiv").hide();
-  $("#regnewuserdiv").show();
+    });
+  },
+  currUser: function() {
+    this.getData('/profile/api/curr_user', 'GET', this.$curUserTask, '');
+  },
+  usersTasks: function() {
+    this.getData('profile/api/other/tasks', 'GET', this.$otherUserTasks, this.pickUp);
+  },
+  currUserAssignments: function() {
+    this.getData('/profile/api/curr_user/assignments', 'GET', this.$curUserPickedUp, '');
+  },
+  grabTask: function() {
+    let taskId = this.pickUp.data('id');
+    $.ajax({
+      url: '/profile/api/grab/task/' + taskId,
+      method: 'POST'
+    }).then((response) => {
+      console.log("Picked up");
+    });
+  }
 };
 
-//User Registration Button ------    "No account Sign up"
-$("#regnewuserbtn").click(function() {
-  console.log("Registration started");
-  $("#registrationdiv").show();
-});
-
-//Forgot Password?
-//$("#forgotpwbtn").click(function() {
-//console.log("Forgot Password Clicked");
-//});
-
-
-
-//on main page =================================================================
-//my account button
-$("#myaccountbtn").click(function() {
-  console.log("My Account");
-  $("#maindiv").hide();
-  $("#myaccountdiv").show();
-});
-
-//add task button
-$("#addtaskbtn").click(function() {
-  console.log("Adding Task");
-
-
-});
-
-//pick up task button
-$("#pickupbtn").click(function() {
-  console.log("Picking up task");
-  $("#pickupbtn").fadeTo(100, 0.3);
-
-});
-
-//my task drop down menu
-$("#mytaskbtn").click(function() {
-  console.log("displaying my task");
-  //$("#mytaskdiv").show();
-  $("#mytaskdiv").fadeTo(100, 1.0);
-});
-
-//logout
-$("#logoutbtn").click(function() {
-  console.log("logout");
-
-});
-
-
-
-
-
-//==============================================================================
-//==============================================================================
-//random sandbox for various parts
-//==============================================================================
-//==============================================================================
-
-//google map stuff==============================================================
-
-//Geo-location block to retrieve current latitude and longitude
-
-//var to hold current latitude, passed to Google API
-var lat;
-//var to hold current longitude, passed to Google API
-var lon;
-
-var getPosition = function(options) {
-  return new Promise(function(resolve, reject) {
-    navigator.geolocation.getCurrentPosition(resolve, reject, options);
-  });
-};
-
-getPosition()
-  .then((position) => {
-    console.log(position);
-    lat = position.coords.latitude;
-    lon = position.coords.longitude;
-  })
-  .catch((err) => {
-    console.error(err.message);
-  });
-
-//==============================================================================
-//==============================================================================
-//logic structure
-//==============================================================================
-//==============================================================================
+taskie.init();
