@@ -29,11 +29,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: true
     },
-    rating: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
-      allowNull: false
-    }
   });
 
   User.associate = (models) => {
@@ -44,6 +39,12 @@ module.exports = (sequelize, DataTypes) => {
 
   User.associate = (models) => {
     User.hasMany(models.Assignment, {
+      onDelete: "cascade"
+    });
+  };
+
+  User.associate = (models) => {
+    User.hasMany(models.Ratings, {
       onDelete: "cascade"
     });
   };

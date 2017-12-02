@@ -1,4 +1,3 @@
-
 var taskie = {
   init: function() {
     this.cacheDom();
@@ -13,7 +12,6 @@ var taskie = {
   },
   bindEvents: function() {
     this.pickUp.on('click', this.grabTask.bind(this));
-    //this.pickUp.delegate('.pickUp', 'click', this.grabTask.bind(this));
   },
   render: function() {
     this.currUser();
