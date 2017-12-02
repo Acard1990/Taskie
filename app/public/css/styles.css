@@ -16,33 +16,41 @@ h3 {
     font-family: 'Open Sans', sans-serif;
     padding-bottom: 250px;
 }
-h2{
+
+h2,
+p {
     font-family: 'Open Sans', sans-serif;
 }
-.intro{
+
+.intro {
     color: #3BE67F;
 }
-form{
+
+form {
     padding-bottom: 30px;
     float: center;
 }
-label{
-	float: left;
-	text-align: right;
-	width: 90px;
-	padding: 1px;
+
+label {
+    float: left;
+    width: 90px;
+    padding: 1px;
 }
-input, textarea{
-	display: block;
-	margin-bottom: 20px;
+
+input,
+textarea {
+    display: block;
+    margin-bottom: 20px;
 }
-input[type="submit"]{
-	margin-bottom: 100px;
+
+input[type="submit"] {
+    margin-bottom: 100px;
 }
 
 header {
     background-color: white;
 }
+
 button {
     font-family: 'Open Sans', sans-serif;
 }
@@ -52,6 +60,11 @@ p {
     font-family: 'Open Sans', sans-serif;
     text-align: center;
     background-color: transparent;
+}
+
+.tasks2 {
+    font-family: 'Open Sans', sans-serif;
+    color: #3BE67F;
 }
 
 .navbar {
@@ -138,7 +151,6 @@ p {
 .button3:hover {
     background-color: #3BE67F;
     color: white;
-    
 }
 
 .button4 {
@@ -183,4 +195,171 @@ button a:hover {
 button a:active {
     color: #3BE67F;
     background-color: white;
+}
+
+[data-table] {
+    font-size: 12pt;
+    width: 100%;
+}
+
+
+/* Default Table Theme */
+
+@element [data-table] {
+    $this {
+        font-family: 'Source Sans Pro', sans-serif;
+        margin: 1em 0;
+        color: #333;
+        border-collapse: collapse;
+    }
+    $this thead th,
+    $this tfoot th {
+        color: #777;
+        background: rgba(0, 0, 0, .1);
+    }
+    $this caption {
+        padding: .5em;
+    }
+    $this th,
+    $this td {
+        padding: .5em;
+        background: white;
+        border: 1px solid #aaa;
+    }
+    $this tbody tr:nth-of-type(even) {
+        background: rgba(0, 0, 0, .05);
+    }
+}
+
+
+/* Grid Table Layout */
+
+@element [data-table^=col-] {
+    $this thead {
+        display: none;
+    }
+    $this tr:after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+    $this[data-table$=-one] td {
+        width: 100%;
+    }
+    $this[data-table$=-two] td {
+        width: 50%;
+    }
+    $this[data-table$=-three] td {
+        width: 33.33%;
+    }
+    $this[data-table$=-four] td {
+        width: 25%;
+    }
+    $this[data-table$=-five] td {
+        width: 20%;
+    }
+    $this[data-table$=-six] td {
+        width: 16.66%;
+    }
+    $this td {
+        float: left;
+        line-height: 1.4;
+        padding: .5em 0;
+        text-align: center;
+        position: relative;
+    }
+    $this td:nth-of-type(n+2) {
+        padding-bottom: 17.5pt;
+    }
+    $this td:after {
+        content: attr(data-heading);
+        display: block;
+        width: 100%;
+        position: absolute;
+        bottom: 5pt;
+        left: 0;
+        font-size: 10pt;
+        line-height: 1.2;
+        color: #999;
+    }
+    $this td:first-of-type:after {
+        display: none;
+    }
+    $this td:nth-of-type(n+2) {
+        border-top: none;
+    }
+    $this[data-table$=-two] td:nth-of-type(n+2):nth-of-type(odd),
+    $this[data-table$=-three] td:nth-of-type(n+2):nth-of-type(3n),
+    $this[data-table$=-three] td:nth-of-type(n+2):nth-of-type(3n+1),
+    $this[data-table$=-four] td:nth-of-type(n+2),
+    $this[data-table$=-five] td:nth-of-type(n+2),
+    $this[data-table$=-six] td:nth-of-type(n+2) {
+        border-left-color: transparent;
+    }
+    $this[data-table$=-four] td:nth-of-type(4n+2),
+    $this[data-table$=-five] td:nth-of-type(5n+2),
+    $this[data-table$=-six] td:nth-of-type(6n+2) {
+        border-left-color: #aaa;
+    }
+    $this td:first-of-type {
+        color: #777;
+        background: rgba(0, 0, 0, .1);
+        font-weight: 600;
+        width: 100%;
+    }
+}
+
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.container input {
+    position: absolute;
+    opacity: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+.container:hover input~.checkmark {
+    background-color: #ccc;
+}
+
+.container input:checked~.checkmark {
+    background-color: #3BE67F;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.container input:checked~.checkmark:after {
+    display: block;
+}
+
+.container .checkmark:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
 }
