@@ -13,6 +13,7 @@ var taskie = {
     this.createTaskText = $('#createNewTask');
     this.$welcomeText = $('#welcomeText');
     this.$myCompletedTasks = $('#completed');
+    this.descriptions = $('');
   },
   bindEvents: function() {
     this.createTaskText.on('click', this.showTaskForm.bind(this));
@@ -27,6 +28,7 @@ var taskie = {
     this.currUserAssignments();
     this.allMyCompletedTasks();
     this.addForm.hide();
+    $('.task-details-row').hide();
   },
   currUser: function() {
     $.ajax({
@@ -38,7 +40,7 @@ var taskie = {
         if (response[i].status == false && response[i].Assignment == null) {
           let p =
             $(`<div class="row">
-                <div class="col-6 middle-this">
+                <div class="col-5 middle-this">
                   <p>
                     <span class="dot-unassigned"></span>
                     ${response[i].description}
@@ -48,14 +50,14 @@ var taskie = {
                   <p>
                   </p>
                 </div>
-                <div class="col-2">
+                <div class="col-3">
                 </div>
               </div>`);
           taskie.$curUserTask.append(p);
         } else if (response[i].status == false) {
           let p =
             $(`<div class="row">
-                <div class="col-6 middle-this">
+                <div class="col-5 middle-this">
                   <p>
                     <span class="dot"></span>
                     ${response[i].description}
@@ -63,10 +65,10 @@ var taskie = {
                 </div>
                 <div class="col-4 middle-this">
                   <p>
-                    by: ${response[i].User.firstName} ${response[i].User.lastName}
+                    picked by: ${response[i].Assignment.User.firstName} ${response[i].Assignment.User.lastName}
                   </p>
                 </div>
-                <div class="col-2">
+                <div class="col-3">
                 </div>
               </div>`);
           taskie.$curUserTask.append(p);
@@ -84,7 +86,7 @@ var taskie = {
         if (response[i].Assignment == null) {
           let p =
             $(`<div class="row otherUserTasks">
-              <div class="col-6 middle-this">
+              <div class="col-5 middle-this">
                 <p>
                   ${response[i].description}
                 </p>
@@ -94,7 +96,7 @@ var taskie = {
                   for: ${response[i].User.firstName} ${response[i].User.lastName}
                 </p>
               </div>
-              <div class="col-2">
+              <div class="col-3">
                 <button class="btn btn-sm btn-grab-task pickUp" data-id="${response[i].id}">Pick Up</button>
               </div>
             </div>`);
@@ -112,21 +114,26 @@ var taskie = {
       for (let i=0;i<response.length;i++) {
         if (response[i].Task.status == false) {
           let p =
-            $(`<div class="row otherUserTasks">
-              <div class="col-6 middle-this">
-                <p>
-                  ${response[i].Task.description}
-                </p>
-              </div>
-              <div class="col-4 middle-this">
-                <p>
-                  for: ${response[i].Task.User.firstName} ${response[i].Task.User.lastName}
-                </p>
-              </div>
-              <div class="col-2">
-                <button class="btn btn-sm btn-grab-task done" data-id="${response[i].Task.id}">Done</button>
-              </div>
-            </div>`);
+            $(`<div class="otherUserTasks">
+                <div id="Task_ID${response[i].Task.id}" class="row task-description-row">
+                  <div class="col-5 middle-this">
+                    <p>
+                      ${response[i].Task.description}
+                    </p>
+                  </div>
+                  <div class="col-4 middle-this">
+                    <p>
+                      for: ${response[i].Task.User.firstName} ${response[i].Task.User.lastName}
+                    </p>
+                  </div>
+                  <div class="col-3">
+                    <button class="btn btn-sm btn-grab-task done" data-id="${response[i].Task.id}">Done</button>
+                  </div>
+                </div>
+                <div class="row task-details-row">
+                  <p class="col-12">${response[i].Task.details}</p>
+                </div>
+              </div>`);
           taskie.$curUserPickedUp.append(p);
         }
       }
@@ -142,7 +149,7 @@ var taskie = {
         if (response[i].status == true) {
           let p =
             $(`<div class="row">
-              <div class="col-6 middle-this">
+              <div class="col-5 middle-this">
                 <p class="strikethrough">
                   <span class="dot"></span>
                   ${response[i].description}
@@ -153,7 +160,7 @@ var taskie = {
                   by: ${response[i].Assignment.User.firstName} ${response[i].Assignment.User.lastName}
                 </p>
               </div>
-              <div class="col-2">
+              <div class="col-3">
                 <button class="btn btn-sm btn-grab-task reward" data-id="${response[i].id}">Reward</button>
               </div>
             </div>`);
