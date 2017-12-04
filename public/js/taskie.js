@@ -211,3 +211,8 @@ $(document).on('click', '.done', function(){
     taskie.render();
   });
 });
+
+$(document).on('click', '.task-description-row', function() {
+  $(this).toggleClass('task-description-row-background');
+  $(this).parent().find('.task-details-row').toggle();
+});
