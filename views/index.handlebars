@@ -1,48 +1,11 @@
-
-        <a class="col-md-2"></a>
-        <div class="intro container col-md-8" style="background-color: transparent !important;">
-            <h3 style="margin-bottom: 10%;">
-                <p>Have a busy schedule and can't get everything done in one day?</p>
-                <p>No problem. Taskie is here to solve your busy day.</p>
-                <p>Sign up today, post your tasks, and let the community help you out.</p>
-            </h3>
-        </div>
-
-        <div class="row">
-          <a class="col-md-4"></a>
-              <button type="button" onclick="document.getElementById('id01').style.display='block'" class="button4 col-md-4">Get Started Now</button>
-        </div>
-
-        <div id="id01" class="modal">
-          <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-          <form class="modal-content animate" action="/auth/signup" method="POST">
-            <div class="container">
-              <label>
-                          <b>Email</b>
-              </label>
-              <input type="text" placeholder="Enter Email" name="email" required>
-              <label>
-                          <b>Password</b>
-              </label>
-              <input type="password" placeholder="Enter Password" name="password" required>
-
-              <label>
-                          <b>First Name</b>
-              </label>
-              <input type="Text" placeholder="First Name" name="firstName" required>
-              <label>
-                          <b>Last Name</b>
-              </label>
-              <input type="text" placeholder="Last Name" name="lastName" required>
-              <input type="checkbox" checked="checked"> Remember me
-              <p style="color: lightgrey;">By creating an account you agree to our Terms & Privacy.</p>
-              <div class="g-signin2" data-onsuccess="onSignIn"></div>
-
-              <div class="clearfix">
-                <button type="submit" class="signupbtn">Sign Up</button>
-                <button class="loginbtn" onclick="location.href='/auth/google'">Login with Google</button>
-                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-              </div>
-            </div>
-          </form>
-        </div>
+<div class="container home-content">
+  <div class="home-main-content">
+    <h3 class="white-text text-center">Have a busy schedule and can't get everything done in one day?</h3>
+    <h3 class="white-text text-center">No problem. Taskie is here to solve your busy day.</h3>
+    <h3 class="white-text text-center">Sign up today, post your tasks, and let the community help you out.</h3>
+    <div class="row">
+      <a class="col-md-4"></a>
+        <button type="button" onclick="document.getElementById('id01').style.display='block'" class="button4 col-md-4">Get Started Now</button>
+    </div>
+  </div>
+</div>

@@ -52,7 +52,10 @@ router.get('/curr_user/assignments', (req, res, next) => {
     where: {
       UserId: req.user.id
     },
-    include: [db.Task, {
+    include: [{
+      model: db.Task,
+      include: [db.User]
+    }, {
       model: db.User,
       include: [db.Ratings]
     }]
@@ -70,7 +73,27 @@ router.post('/grab/task/:taskId', (req, res, next) => {
       where: {
         id: req.params.taskId
       }
-  })).catch(next);
+  })).then(task => res.json(task)).catch(next);
+});
+
+router.put('/complete/task/:taskId', (req, res, next) => {
+  db.Task.update({
+    status: true
+  }, {
+    where: {
+      id: req.params.taskId
+    }
+  }).then(task => res.json(task)).catch(next);
+});
+
+router.put('/reward/task/:taskId', (req, res, next) => {
+  db.Task.update({
+    reward: true
+  }, {
+    where: {
+      id: req.params.taskId
+    }
+  }).then(task => res.json(task)).catch(next);
 });
 
 router.post('/rating/update', (req, res, next) => {
@@ -79,6 +102,5 @@ router.post('/rating/update', (req, res, next) => {
     UserId: req.body.postUserRating
   }).then(rating => res.json(rating)).catch(next);
 });
-
 
 module.exports = router;

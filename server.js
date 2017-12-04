@@ -5,6 +5,7 @@ const passport = require('passport');
 const authRoutes = require('./routes/auth-routes');
 const userRoutes = require('./routes/user-routes');
 const taskRoutes = require('./routes/task-routes');
+const htmlRoutes = require('./routes/html-routes');
 const passportSetup = require('./config/passport-setup');
 const exphbs = require("express-handlebars");
 const bodyParser = require("body-parser");
@@ -45,16 +46,10 @@ app.use(flash());
 app.use('/auth', authRoutes);
 app.use('/profile', userRoutes);
 app.use('/profile/api', taskRoutes);
-
-//create home route
-app.get('/', (req, res) => {
-    res.render('index', { user: req.user });
-});
-
+app.use(htmlRoutes);
 
 db.sequelize.sync({}).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
-
 });

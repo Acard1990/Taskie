@@ -1,9 +1,7 @@
-
 /*Fonts:
 Taskie logo: Pacifico
 All other fonts are Open Sans
 Both are available at fonts.google.com
-
 Font Sizes:
 Taskie logo on sign up and sign in pages: 72px
 Taskie main logo: 48px
@@ -17,7 +15,6 @@ Add new task text: 15px
 Sign in/sign up form placeholder text: 14px
 Sign up terms of service: 12px
 Copyright text: 10px
-
 Colors:
 Green: #3BE67F
 Black: #565656
@@ -27,11 +24,25 @@ Stars: #FFE522
 Drop shadow: rgba(187, 187, 187, 0.5)
 Background image should have background-color of rgba(0,0,0,0.5)*/
 
- body {
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("pisidesign-equipe-color.jpg");
-    line-height: 1.0;
- }
+body {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("pisidesign-equipe-color.jpg");
+  line-height: 1.0;
+  font-family: 'Open Sans', sans-serif;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
 
+.site-content {
+  flex: 1;
+}
+
+.footer {
+  background-color: #f8f9fa!important;
+}
+.text-muted {
+  font-size: 12px;
+}
 /*header stuff*/
 #headerinline {
   background: white;
@@ -41,7 +52,6 @@ Background image should have background-color of rgba(0,0,0,0.5)*/
   color: #3BE67F;
   font-family: 'Pacifico', cursive;
   font-size: 48px;
-  background: white;
 }
 
 .logomodel {
@@ -133,16 +143,11 @@ button {
     font-family: 'Open Sans', sans-serif;
 }
 
-p {
+.white-align {
     color: white;
     font-family: 'Open Sans', sans-serif;
     text-align: center;
     background-color: transparent;
-}
-
-.navbar {
-    padding-left: 850px;
-    padding-right: 850px;
 }
 
 .button1 {
@@ -274,4 +279,188 @@ button a:active {
 
 .model {
   padding-top: 1px;
+}
+
+nav>.container {
+  padding: 0 16px;
+}
+
+.nav-item {
+  margin-left: 20px;
+}
+.login {
+  background: none;
+  border: 1px solid #565656;
+  color: #565656;
+  margin-left: 20px;
+}
+
+.login:hover {
+  background: #565656;
+  border: 1px solid #565656;
+  color: white;
+}
+
+.signup {
+  background: none;
+  border: 1px solid #3BE67F;
+  color: #3BE67F;
+  margin-left: 20px;
+}
+
+.signup:hover {
+  background: #3BE67F;
+  border: 1px solid #3BE67F;
+  color: white;
+}
+
+.userpic {
+  border-radius: 50px;
+  height: 50px;
+}
+
+.welcome-text {
+  color: #565656;
+  text-align: left;
+}
+
+.align-this {
+  padding-top: 20px;
+}
+
+.bottom-border {
+  border-bottom: 1px solid #F6F6F6;
+}
+
+.user-task-area {
+  padding: 10px;
+  font-size: 12px;
+}
+
+.btn-add-task {
+  background-color: #3BE67F;
+  border: 1px solid #3BE67F;
+}
+
+.btn-add-task:hover {
+  background-color: white;
+  border: 1px solid #3BE67F;
+  color: #3BE67F;
+}
+
+#createNewTask {
+  color: #3BE67F;
+  cursor: pointer;
+  margin-right: -20px;
+}
+
+.need-border {
+  border-left: 1px solid #F6F6F6;
+}
+
+.pickUp, .done, .reward {
+  color: #3BE67F;
+  background: none;
+  border: 1px solid #3BE67F;
+}
+
+.pickUp:hover, .done:hover, .reward:hover {
+  background-color: #3BE67F;
+  border: 1px solid #3BE67F;
+  color: white;
+}
+
+.otherUserTasks {
+  padding: 5px 0;
+}
+
+.middle-this {
+  margin-top: 8px;
+}
+.btn-group-sm>.btn, .btn-sm {
+  font-size: 12px;
+}
+
+.dot {
+  display:inline-block;
+  width:0.7em;
+  height:0.7em;
+  border-radius:50%;
+  background-color: #3BE67F;
+  margin-right: 10px;
+}
+
+.dot-unassigned {
+  display:inline-block;
+  width:0.7em;
+  height:0.7em;
+  border-radius:50%;
+  border: 1px solid #3BE67F;
+  margin-right: 10px;
+}
+
+.btn-sm {
+  min-width: 6em;
+}
+
+.all-profile-content {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.intro {
+  margin-top: 30px;
+}
+
+.white-text {
+  color: white;
+  line-height: 40px;
+}
+.home-content {
+  height: 500px;
+}
+.home-main-content {
+  position: relative;
+  top: 50%;
+  transform: perspective(1px) translateY(-50%);
+}
+
+.strikethrough {
+  text-decoration: line-through;
+  color: #B6B6B6;
+}
+
+.task-form-group {
+  margin-right: 20px;
+  position: relative;
+  display: inline-block;
+}
+
+.task-form-div {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 400px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 10000;
+}
+
+.show {
+  display: block;
+}
+
+#addTaskForm {
+  padding: 20px;
+}
+
+input[type="text"].task-form {
+  padding: 10px;
+  font-size: 13px;
+}
+
+.task-text-area {
+  margin-bottom: 10px;
+  font-size: 13px;
+  padding: 10px;
 }
