@@ -35,7 +35,7 @@ var taskie = {
     }).done(response => {
       console.log(response);
       for (let i=0;i<response.length;i++) {
-        if (response[i].status == false) {
+        if (response[i].status == false && response[i].Assignment == null) {
           let p =
             $(`<div class="row">
                 <div class="col-6 middle-this">
@@ -46,6 +46,24 @@ var taskie = {
                 </div>
                 <div class="col-4 middle-this">
                   <p>
+                  </p>
+                </div>
+                <div class="col-2">
+                </div>
+              </div>`);
+          taskie.$curUserTask.append(p);
+        } else if (response[i].status == false) {
+          let p =
+            $(`<div class="row">
+                <div class="col-6 middle-this">
+                  <p>
+                    <span class="dot"></span>
+                    ${response[i].description}
+                  </p>
+                </div>
+                <div class="col-4 middle-this">
+                  <p>
+                    by: ${response[i].User.firstName} ${response[i].User.lastName}
                   </p>
                 </div>
                 <div class="col-2">
