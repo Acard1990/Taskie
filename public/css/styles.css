@@ -52,6 +52,11 @@ body {
   color: #3BE67F;
   font-family: 'Pacifico', cursive;
   font-size: 48px;
+  margin-left: -40px;
+}
+
+#navbarSupportedContent {
+  margin-right: -40px;
 }
 
 .logomodel {
@@ -434,7 +439,6 @@ nav>.container {
 }
 
 .task-form-group {
-  margin-right: 20px;
   position: relative;
   display: inline-block;
 }
@@ -517,5 +521,13 @@ p {
 @media only screen and (max-width: 576px) {
   .userpic {
     display: none;
+  }
+
+  #logo {
+    margin-left: 0px;
+  }
+
+  #navbarSupportedContent {
+    margin-right: 0px;
   }
 }
