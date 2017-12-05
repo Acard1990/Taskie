@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>Taskie</title>
   <meta charset="utf-8">
@@ -20,6 +21,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 </head>
+
 <body>
   <div class="site-content">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -107,22 +109,16 @@
     </script>
     <div id="id02" class="modal">
       <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <form class="modal-content animate" action="/auth/login/local">
-        <div class="imgcontainer">
-
-        </div>
-
+      <form class="modal-content animate" action="/auth/login/local" method="POST">
         <div class="container">
           <label>
-                      <b>Email</b>
-                  </label>
-          <input type="text" placeholder="Enter Email" name="uname" required>
-
+            <b>Email</b>
+          </label>
+          <input type="text" placeholder="Enter Email" name="email" required>
           <label>
-                      <b>Password</b>
-                  </label>
-          <input type="password" placeholder="Enter Password" name="psw" required>
-
+            <b>Password</b>
+          </label>
+          <input type="password" placeholder="Enter Password" name="password" required>
           <button class="loginbtn" type="submit">Login</button>
           <button class="loginbtn" onclick="location.href='/auth/google'">Login with Google</button>
           <input type="checkbox" checked="checked"> Remember me
@@ -189,4 +185,5 @@
     </div>
   </footer>
 </body>
+
 </html>
