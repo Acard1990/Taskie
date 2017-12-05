@@ -12,8 +12,10 @@ var taskie = {
     this.addForm = $('#addTaskForm');
     this.createTaskText = $('#createNewTask');
     this.$welcomeText = $('#welcomeText');
-    this.$myCompletedTasks = $('#completed');
     this.descriptions = $('');
+    this.$myCurrentTasks = $('#myCurrentTasks');
+    this.$myAssignedTasks = $('#myAssignedTasks');
+    this.$myCompletedTasks = $('#completed');
   },
   bindEvents: function() {
     this.createTaskText.on('click', this.showTaskForm.bind(this));
@@ -39,36 +41,28 @@ var taskie = {
       for (let i=0;i<response.length;i++) {
         if (response[i].status == false && response[i].Assignment == null) {
           let p =
-            $(`<div class="row">
-                <div class="col-5 middle-this">
-                  <p>
+            $(`<div class="row task-space">
+                <div class="col-12 middle-this">
+                  <p class="indent-text">
                     <span class="dot-unassigned"></span>
                     ${response[i].description}
                   </p>
-                </div>
-                <div class="col-4 middle-this">
-                  <p>
-                  </p>
-                </div>
-                <div class="col-3">
                 </div>
               </div>`);
           taskie.$curUserTask.append(p);
         } else if (response[i].status == false) {
           let p =
-            $(`<div class="row">
+            $(`<div class="row task-space">
                 <div class="col-5 middle-this">
-                  <p>
+                  <p class="indent-text">
                     <span class="dot"></span>
                     ${response[i].description}
                   </p>
                 </div>
-                <div class="col-4 middle-this">
+                <div class="col-7 middle-this">
                   <p>
-                    picked by: ${response[i].Assignment.User.firstName} ${response[i].Assignment.User.lastName}
+                    picked up by: ${response[i].Assignment.User.firstName} ${response[i].Assignment.User.lastName}
                   </p>
-                </div>
-                <div class="col-3">
                 </div>
               </div>`);
           taskie.$curUserTask.append(p);
@@ -85,9 +79,9 @@ var taskie = {
       for (let i=0;i<response.length;i++) {
         if (response[i].Assignment == null) {
           let p =
-            $(`<div class="row otherUserTasks">
+            $(`<div class="row task-space">
               <div class="col-5 middle-this">
-                <p>
+                <p class="indent-text">
                   ${response[i].description}
                 </p>
               </div>
@@ -114,10 +108,10 @@ var taskie = {
       for (let i=0;i<response.length;i++) {
         if (response[i].Task.status == false) {
           let p =
-            $(`<div class="otherUserTasks">
+            $(`<div class="task-space">
                 <div id="Task_ID${response[i].Task.id}" class="row task-description-row">
                   <div class="col-5 middle-this">
-                    <p>
+                    <p class="indent-text">
                       ${response[i].Task.description}
                     </p>
                   </div>
@@ -148,16 +142,16 @@ var taskie = {
       for (let i=0;i<response.length;i++) {
         if (response[i].status == true) {
           let p =
-            $(`<div class="row">
+            $(`<div class="row task-space">
               <div class="col-5 middle-this">
-                <p class="strikethrough">
+                <p class="strikethrough indent-text">
                   <span class="dot"></span>
                   ${response[i].description}
                 </p>
               </div>
               <div class="col-4 middle-this">
                 <p class="strikethrough">
-                  by: ${response[i].Assignment.User.firstName} ${response[i].Assignment.User.lastName}
+                  ${response[i].Assignment.User.firstName} ${response[i].Assignment.User.lastName}
                 </p>
               </div>
               <div class="col-3">
@@ -170,7 +164,7 @@ var taskie = {
     });
   },
   showTaskForm: function() {
-    this.addForm.toggle();
+    this.addForm.toggle(300);
   }
 };
 
@@ -214,5 +208,5 @@ $(document).on('click', '.done', function(){
 
 $(document).on('click', '.task-description-row', function() {
   $(this).toggleClass('task-description-row-background');
-  $(this).parent().find('.task-details-row').toggle();
+  $(this).parent().find('.task-details-row').toggle(200);
 });

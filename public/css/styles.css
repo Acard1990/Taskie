@@ -322,6 +322,7 @@ nav>.container {
 .welcome-text {
   color: #565656;
   text-align: left;
+  margin-left: 15px;
 }
 
 .align-this {
@@ -332,8 +333,15 @@ nav>.container {
   border-bottom: 1px solid #F6F6F6;
 }
 
-.user-task-area {
+.user-task-title {
   padding: 10px;
+  font-size: 14px;
+  padding-bottom: -50px;
+  cursor: pointer;
+}
+
+.user-task-area {
+  padding: 0 10px 10px 10px;
   font-size: 12px;
 }
 
@@ -372,7 +380,7 @@ nav>.container {
   color: white;
 }
 
-.otherUserTasks {
+.task-space {
   padding: 5px 0;
 }
 
@@ -447,6 +455,7 @@ nav>.container {
 
 #addTaskForm {
   padding: 20px;
+  margin-top: 5px;
 }
 
 input[type="text"].task-form {
@@ -497,4 +506,16 @@ p {
 
 .task-details-row>p {
   line-height: 1.5em;
+}
+.indent-text {
+  display: inline-block;
+  text-indent: -1.9em;
+  padding-left: 1.9em;
+  line-height: 1.4em;
+}
+
+@media only screen and (max-width: 576px) {
+  .userpic {
+    display: none;
+  }
 }
