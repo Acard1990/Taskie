@@ -35,19 +35,12 @@ module.exports = (sequelize, DataTypes) => {
     User.hasMany(models.Task, {
       onDelete: "cascade"
     });
-  };
-
-  User.associate = (models) => {
     User.hasMany(models.Assignment, {
       onDelete: "cascade"
     });
-  };
-
-  User.associate = (models) => {
-    User.hasMany(models.Ratings, {
+    User.hasMany(models.Rewards, {
       onDelete: "cascade"
     });
   };
-
   return User;
 };

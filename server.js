@@ -5,6 +5,7 @@ const passport = require('passport');
 const authRoutes = require('./routes/auth-routes');
 const userRoutes = require('./routes/user-routes');
 const taskRoutes = require('./routes/task-routes');
+const rewardRoutes = require('./routes/rewards-routes');
 const htmlRoutes = require('./routes/html-routes');
 const passportSetup = require('./config/passport-setup');
 const exphbs = require("express-handlebars");
@@ -44,8 +45,9 @@ app.use(flash());
 
 // set up routes
 app.use('/auth', authRoutes);
-app.use('/profile', userRoutes);
+app.use(userRoutes);
 app.use('/profile/api', taskRoutes);
+app.use('/rewards/api', rewardRoutes);
 app.use(htmlRoutes);
 
 db.sequelize.sync({}).then(function() {

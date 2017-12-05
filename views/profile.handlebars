@@ -24,7 +24,7 @@
         <form action="/profile/api/task" method="post">
           <input type="text" class="form-control task-form" placeholder="Task Description" name="description" maxlength="50">
           <textarea class="form-control task-text-area" placeholder="Task Details" name="details" maxlength="250"></textarea>
-          <button type="submit" class="btn btn-sm pickUp">Submit</button>
+          <button type="submit" class="btn btn-sm btn-task">Submit</button>
         </form>
       </div>
     </div>
@@ -61,6 +61,5 @@
     </div>
   </div>
 </div>
-
 <script>let id = {{user.id}}</script>
 <script src="./js/taskie.js"></script>

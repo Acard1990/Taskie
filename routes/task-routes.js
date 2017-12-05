@@ -18,10 +18,7 @@ router.get('/curr_user', (req, res, next) => {
     where: {
       UserId: req.user.id
     },
-    include: [{
-      model: db.User,
-      include: db.Ratings
-    }, {
+    include: [db.User, {
       model: db.Assignment,
       include: db.User
     }]
@@ -39,10 +36,7 @@ router.get('/other/tasks', (req, res, next) => {
     limit: 20,
     include: [db.User, {
       model: db.Assignment,
-      include: [{
-        model: db.User,
-        include: [db.Ratings]
-      }]
+      include: [db.User]
     }]
     }).then((task) => res.json(task)).catch(next);
 });
@@ -55,10 +49,7 @@ router.get('/curr_user/assignments', (req, res, next) => {
     include: [{
       model: db.Task,
       include: [db.User]
-    }, {
-      model: db.User,
-      include: [db.Ratings]
-    }]
+    }, db.User]
     }).then((task) => res.json(task)).catch(next);
 });
 
@@ -84,23 +75,6 @@ router.put('/complete/task/:taskId', (req, res, next) => {
       id: req.params.taskId
     }
   }).then(task => res.json(task)).catch(next);
-});
-
-router.put('/reward/task/:taskId', (req, res, next) => {
-  db.Task.update({
-    reward: true
-  }, {
-    where: {
-      id: req.params.taskId
-    }
-  }).then(task => res.json(task)).catch(next);
-});
-
-router.post('/rating/update', (req, res, next) => {
-  db.Rating.create({
-    rating: req.body.rating,
-    UserId: req.body.postUserRating
-  }).then(rating => res.json(rating)).catch(next);
 });
 
 module.exports = router;

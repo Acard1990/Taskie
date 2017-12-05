@@ -16,4 +16,8 @@ router.get('/profile', (req, res, next) => {
   res.render('profile', { user: req.user });
 });
 
+router.get('/rewards', (req, res, next) => {
+  res.render('rewards', { user: req.user });
+});
+
 module.exports = router;

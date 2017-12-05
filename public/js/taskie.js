@@ -12,10 +12,11 @@ var taskie = {
     this.addForm = $('#addTaskForm');
     this.createTaskText = $('#createNewTask');
     this.$welcomeText = $('#welcomeText');
+    this.$myCompletedTasks = $('#completed');
     this.descriptions = $('');
     this.$myCurrentTasks = $('#myCurrentTasks');
     this.$myAssignedTasks = $('#myAssignedTasks');
-    this.$myCompletedTasks = $('#completed');
+    this.$myCompletedTasks = $('#myCompletedTasks');
   },
   bindEvents: function() {
     this.createTaskText.on('click', this.showTaskForm.bind(this));
@@ -91,7 +92,7 @@ var taskie = {
                 </p>
               </div>
               <div class="col-3">
-                <button class="btn btn-sm btn-grab-task pickUp" data-id="${response[i].id}">Pick Up</button>
+                <button class="btn btn-sm btn-grab-task btn-task pickUp" data-id="${response[i].id}">Pick Up</button>
               </div>
             </div>`);
           taskie.$otherUserTasks.append(p);
@@ -121,7 +122,7 @@ var taskie = {
                     </p>
                   </div>
                   <div class="col-3">
-                    <button class="btn btn-sm btn-grab-task done" data-id="${response[i].Task.id}">Done</button>
+                    <button class="btn btn-sm btn-grab-task btn-task done" data-id="${response[i].Task.id}">Done</button>
                   </div>
                 </div>
                 <div class="row task-details-row">
@@ -140,22 +141,49 @@ var taskie = {
     }).done(response => {
       console.log(response);
       for (let i=0;i<response.length;i++) {
-        if (response[i].status == true) {
+        if (response[i].status == true && response[i].reward == false) {
           let p =
-            $(`<div class="row task-space">
-              <div class="col-5 middle-this">
-                <p class="strikethrough indent-text">
-                  <span class="dot"></span>
-                  ${response[i].description}
-                </p>
+            $(`<div class="task-space">
+                <div class="row task-description-row">
+                  <div class="col-5 middle-this">
+                    <p class="indent-text">
+                      <span class="dot"></span>
+                      ${response[i].description}
+                    </p>
+                  </div>
+                  <div class="col-7 middle-this">
+                    <p class="">
+                      ${response[i].Assignment.User.firstName} ${response[i].Assignment.User.lastName}
+                    </p>
+                  </div>
+                </div>
+              <div class="row task-details-row">
+                <form>
+                  <input id="message-title${response[i].id}" type="text" class="form-control task-form" placeholder="Subject" maxlength="50">
+                  <textarea id="message-details${response[i].id}" class="form-control task-text-area" placeholder="Type a message here..." maxlength="250"></textarea>
+                  <button class="btn btn-sm btn-grab-task btn-task reward" data-taskid="${response[i].id}" data-rewardid="${response[i].Assignment.User.id}">Reward</button>
+                </form>
               </div>
-              <div class="col-4 middle-this">
-                <p class="strikethrough">
-                  ${response[i].Assignment.User.firstName} ${response[i].Assignment.User.lastName}
-                </p>
-              </div>
-              <div class="col-3">
-                <button class="btn btn-sm btn-grab-task reward" data-id="${response[i].id}">Reward</button>
+            </div>`);
+          taskie.$myCompletedTasks.append(p);
+        } else if (response[i].status == true && response[i].reward == true) {
+          let p =
+            $(`<div class="task-space">
+                <div class="row task-description-row">
+                  <div class="col-5 middle-this">
+                    <p class="strikethrough indent-text">
+                      <span class="dot"></span>
+                      ${response[i].description}
+                    </p>
+                  </div>
+                  <div class="col-7 middle-this">
+                    <p class="strikethrough">
+                      ${response[i].Assignment.User.firstName} ${response[i].Assignment.User.lastName}
+                    </p>
+                  </div>
+                </div>
+              <div class="row task-details-row">
+                <h5>Yay! You've already rewarded this user!</h5>
               </div>
             </div>`);
           taskie.$myCompletedTasks.append(p);
@@ -182,18 +210,6 @@ $(document).on('click', '.pickUp', function(){
   });
 });
 
-$(document).on('click', '.reward', function(){
-  let taskId= $(this).data('id');
-  console.log(taskId);
-  $.ajax({
-    url: '/profile/api/reward/task/' + taskId,
-    method: 'PUT'
-  }).then((response) => {
-    console.log("Completed");
-    taskie.render();
-  });
-});
-
 $(document).on('click', '.done', function(){
   let taskId= $(this).data('id');
   console.log(taskId);
@@ -209,4 +225,29 @@ $(document).on('click', '.done', function(){
 $(document).on('click', '.task-description-row', function() {
   $(this).toggleClass('task-description-row-background');
   $(this).parent().find('.task-details-row').toggle(200);
+});
+
+$(document).on('click', '.reward', function(event){
+  event.preventDefault();
+  $(this).parent().find('.task-details-row').toggle(200);
+  let _UserId = $(this).data('rewardid');
+  let _TaskId = $(this).data('taskid');
+  let description = $('#message-title' + _TaskId).val();
+  let details = $('#message-details' + _TaskId).val();
+  let data = {
+    description: description,
+    details: details,
+  };
+  console.log(description);
+  console.log(details);
+  console.log(_UserId);
+  console.log(_TaskId);
+
+  $.ajax({
+    url: '/rewards/api/curr_user/' + _UserId + "/" + _TaskId,
+    method: 'POST',
+    data: data
+  }).then(response => {
+    location.reload();
+  });
 });

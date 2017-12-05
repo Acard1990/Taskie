@@ -39,6 +39,11 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: true
       }
     });
+    Task.hasOne(models.Rewards, {
+      foreignKey: {
+        allowNull: true
+      }
+    });
   };
 
   return Task;
