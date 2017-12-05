@@ -67,6 +67,7 @@ router.post('/grab/task/:taskId', (req, res, next) => {
   })).then(task => res.json(task)).catch(next);
 });
 
+
 router.put('/complete/task/:taskId', (req, res, next) => {
   db.Task.update({
     status: true
