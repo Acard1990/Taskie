@@ -38,7 +38,6 @@ var taskie = {
       url: '/profile/api/curr_user',
       method: 'GET'
     }).done(response => {
-      console.log(response);
       for (let i=0;i<response.length;i++) {
         if (response[i].status == false && response[i].Assignment == null) {
           let p =
@@ -76,7 +75,6 @@ var taskie = {
       url: 'profile/api/other/tasks',
       method: 'GET'
     }).done(response => {
-      console.log(response);
       for (let i=0;i<response.length;i++) {
         if (response[i].Assignment == null) {
           let p =
@@ -105,7 +103,6 @@ var taskie = {
       url: '/profile/api/curr_user/assignments',
       method: 'GET'
     }).done(response => {
-      console.log(response);
       for (let i=0;i<response.length;i++) {
         if (response[i].Task.status == false) {
           let p =
@@ -139,7 +136,6 @@ var taskie = {
       url: '/profile/api/curr_user',
       method: 'GET'
     }).done(response => {
-      console.log(response);
       for (let i=0;i<response.length;i++) {
         if (response[i].status == true && response[i].reward == false) {
           let p =
@@ -200,24 +196,20 @@ taskie.init();
 
 $(document).on('click', '.pickUp', function(){
   let taskId= $(this).data('id');
-  console.log(taskId);
   $.ajax({
     url: '/profile/api/grab/task/' + taskId,
     method: 'POST'
   }).then((response) => {
-    console.log("Picked up");
     taskie.render();
   });
 });
 
 $(document).on('click', '.done', function(){
   let taskId= $(this).data('id');
-  console.log(taskId);
   $.ajax({
     url: '/profile/api/complete/task/' + taskId,
     method: 'PUT'
   }).then((response) => {
-    console.log("Picked up");
     taskie.render();
   });
 });
@@ -238,10 +230,6 @@ $(document).on('click', '.reward', function(event){
     description: description,
     details: details,
   };
-  console.log(description);
-  console.log(details);
-  console.log(_UserId);
-  console.log(_TaskId);
 
   $.ajax({
     url: '/rewards/api/curr_user/' + _UserId + "/" + _TaskId,

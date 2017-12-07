@@ -17,7 +17,6 @@ var rewards = {
       url: '/rewards/api/curr_user',
       method: 'GET'
     }).done(response => {
-      console.log(response);
       for (let i=0;i<response.length;i++) {
         let p =
           $(`<div class="task-space">
